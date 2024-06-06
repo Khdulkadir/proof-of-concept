@@ -19,65 +19,18 @@ app.listen(app.get('port'), function () {
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 
-/*** Variabelen ***/ 
-const redpersUrl = 'https://redpers.nl/wp-json/wp/v2/',
-      directusUrl = 'https://fdnd-agency.directus.app/items/redpers_shares',
-      postsUrl = redpersUrl + 'posts',
-      categoriesUrl = redpersUrl + 'categories',
-      authorUrl = redpersUrl + 'users',
-      categoriesData = [
-        {"id": 9, "name": "Binnenland", "slug": "binnenland"},
-        {"id": 1010, "name": "Buitenland", "slug": "buitenland"}, 
-        {"id": 7164, "name": "Column", "slug": "column"},
-        {"id": 6, "name": "Economie", "slug": "economie"},
-        {"id": 4, "name": "Kunst & Media", "slug": "kunst-media"},
-        {"id": 3211, "name": "Podcasts", "slug": "podcast"},
-        {"id": 63, "name": "Politiek", "slug": "politiek"},
-        {"id": 94, "name": "Wetenschap", "slug": "wetenschap"},
-      ];
+/*** Variabelen ***/
 
-// Datum
-const date = new Map();
-const getDate = `day = parsedDate.getDate(), 
-  short = {month: "short"},
-  long = {month: "long"}, 
-  monthShort = Intl.DateTimeFormat("nl-NL", short).format(parsedDate), 
-  monthLong = Intl.DateTimeFormat("nl-NL", long).format(parsedDate),
-  year = parsedDate.getFullYear(),
-  hours = (parsedDate.getHours() < 10 ? '0' : ' ') + parsedDate.getHours(), 
-  minutes = (parsedDate.getMinutes() < 10 ? '0' : '') + parsedDate.getMinutes(), 
-  time = hours + ':' + minutes, 
-  dayMonth = day + ' ' + monthShort,
-  dayMonthYear = day + ' ' + monthLong + ' ' + year,
-  fullDate = day + ' ' + monthLong + ' ' + year + ', ' + time;`
-
-date.set('day-month', `const parsedDate = new Date(postData[i].date),
-  ${getDate}
-  postData[i].date = dayMonth`);
-
-date.set('day-month-year', `const parsedDate = new Date(postData[i].date),
-  ${getDate}
-  postData[i].date = dayMonthYear`)
-
-date.set('full-date', `const parsedDate = new Date(postData[0].date),
-  ${getDate}
-  postData[0].date = fullDate`)
-/*** Routes & data ***/
+const productapiurl = "https://cdn.contentful.com/spaces/x2maf5pkzgmb/environments/master/entries?access_token=VcJDwIe2eizDEjIwdVdDsF7tcQZ-0_uIrcP4BiDULsg&select=fields&content_type=product"
+const sizeapiurl = "https://cdn.contentful.com/spaces/x2maf5pkzgmb/environments/master/entries?access_token=VcJDwIe2eizDEjIwdVdDsF7tcQZ-0_uIrcP4BiDULsg&select=fields&content_type=size"
 
 //Index route
 app.get('/', (request, response) => {
   Promise.all([
-    Promise.all(categoriesData.map(category =>
-      fetchJson(`${postsUrl}?per_page=3&categories=${category.id}`)
-    )),
-    fetchJson(`${postsUrl}?per_page=4`)
-  ]).then(([postData, featuredData]) => {
-
-    // for (var i=0; i < postData.length; i++) {
-    //   eval(date.get('day-month'))
-    // }
-
-    response.render('index', { categories: categoriesData, posts: postData, featured: featuredData });
+    fetchJson(`${productapiurl}`),
+    fetchJson(`${sizeapiurl}`),
+  ]).then(([productdata, sizedata]) => {
+    response.render('index', { products: productdata, sizes: sizedata });
   })
 })
 
