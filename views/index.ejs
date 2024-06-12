@@ -1,5 +1,20 @@
-<%= products.items[2].fields.title %>
-<br>
-<%= products.items[2].fields.description %>
-<br>
-<%= products.items[1].fields.size.sys.id %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product List</title>
+</head>
+<body>
+  <h1>Product List</h1>
+  <ul>
+      <li>
+        <p>Size: <%= products[5].fields.title %></p>
+        <p>Size: <%= products[0].fields.description %></p>
+    <ul class="size-options">
+        <li class="size-option">Size: <%= products[2].fields.size %></li>
+        <li class="size-option">Size: <%= products[2].fields.size %></li>
+        <li class="size-option">Size: <%= products[0].fields.size %></li>
+    </ul>
+</body>
+</html>
