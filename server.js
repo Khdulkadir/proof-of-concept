@@ -22,14 +22,37 @@ app.listen(app.get('port'), function () {
 /*** Variabelen ***/
 
 const configurableproductapiurl = "https://cdn.contentful.com/spaces/x2maf5pkzgmb/environments/master/entries?access_token=VcJDwIe2eizDEjIwdVdDsF7tcQZ-0_uIrcP4BiDULsg&content_type=configurableProduct&limit=10"
-const productapiurl = `https://cdn.contentful.com/spaces/x2maf5pkzgmb/environments/master/entries?access_token=VcJDwIe2eizDEjIwdVdDsF7tcQZ-0_uIrcP4BiDULsg&sys.id=${id}`
+// const productapiurl = `https://cdn.contentful.com/spaces/x2maf5pkzgmb/environments/master/entries?access_token=VcJDwIe2eizDEjIwdVdDsF7tcQZ-0_uIrcP4BiDULsg&sys.id=${id}`
 
-//Index route
-app.get('/', (request, response) => {
-  Promise.all([
-    fetchJson(configurableproductapiurl),
-  ]).then(([configurableproductdata]) => {
+// //Index route
+// app.get('/', (request, response) => {
+//   Promise.all([
+//     fetchJson(configurableproductapiurl),
+//     fetchJson(productapiurl)
+//   ]).then(([configurableproductdata, productdata]) => {
 
-    response.render('index', { configurableproduct: configurableproductdata });
-  })
-})
+//     response.render('index', { configurableproduct: configurableproductdata, product: productdata});
+//   })
+// })
+// Index route
+app.get('/', (req, res) => {
+  fetchJson(configurableproductapiurl)
+    .then(configurableproductdata => {
+      const ids = configurableproductdata.items.map(item => item.sys.id);
+
+      // Fetch data for each ID
+      const fetchPromises = ids.map(id => {
+        const productapiurl = `https://cdn.contentful.com/spaces/x2maf5pkzgmb/environments/master/entries?access_token=VcJDwIe2eizDEjIwdVdDsF7tcQZ-0_uIrcP4BiDULsg&sys.id=${id}`;
+        return fetchJson(productapiurl);
+      });
+
+      return Promise.all(fetchPromises)
+        .then(productdata => {
+          res.render('index', { configurableproduct: configurableproductdata, product: productdata });
+        });
+    })
+    .catch(error => {
+      console.error('Error in index route:', error);
+      res.status(500).send('Internal Server Error');
+    });
+});
