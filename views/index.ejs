@@ -8,9 +8,13 @@
 <body>
   <h1>Product List</h1>
 
+
+<%= product[0].items[0].fields.title %>
+
+
 <%= product[0].items[0].fields.title %>
 <%= product[0].items[0].fields.description %>
-<% console.log(product[0].includes.Entry[0].fields.size) %>
+<% console.log(product[0].items[0].fields.products) %>
 <%= product[0].includes.Entry[0].fields.size.value %>
 <%= product[0].includes.Asset[0].fields.file.url %>
 
