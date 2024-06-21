@@ -1,0 +1,12 @@
+header {
+    background-color: var(--dark-background-color);
+    padding: 20px;
+    width: 100%;
+    border-bottom: 1px solid #a8a8a8;
+}
+
+header div.logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

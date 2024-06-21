@@ -42,12 +42,8 @@ app.get('/', (req, res) => {
     })
 });
 
-// app.get('/', (request, response) => {
-//   Promise.all([
-//     fetchJson(configurableproductapiurl),
-//     fetchJson(productapiurl)
-//   ]).then(([configurableproductdata, productdata]) => {
-
-//     response.render('index', { configurableproduct: configurableproductdata, product: productdata});
-//   })
-// })
+app.post('/', (req, res) => {
+  setTimeout(() => {
+    res.redirect(301, '/');
+  }, 1000); // 1000 milliseconds = 1 second
+});

@@ -1,49 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product List</title>
+<%- include('./partials/head') %>
+<link rel="stylesheet" href="/styles/index.css">
+<link rel="stylesheet" href="/styles/general.css">
+<link rel="stylesheet" href="/styles/footer.css">
+<link rel="stylesheet" href="/styles/header.css">
+<script src="/scripts/script.js" defer></script>
+<title>Touch Tribe Webshop</title>
 </head>
+
 <body>
-  <h1>Product List</h1>
+<%- include('./partials/header') %>
+
+<% const descriptions = [
+  "A big blue bottle for all your drinks.",
+  "Black t-shirt",
+  "Comfy Colorful Socks",
+  "Unisex hoodie in blue, super comfortable and perfect for all seasons.",
+]; %>
+
+<% const tagid1 = [
+  "product1",
+  "product2",
+  "product3",
+  "product4",
+  ]; %>
+
+<main>
+  <div class="main-product-container">
+    <article class="main-product">
+      <div class="main-product-info-container fadein">
+        <div class="main-product-title-price-container">
+          <h2 class="main-product-title"><%= product[0].items[0].fields.title %></h2>
+          <p class="main-product-price">20 tokens</p>
+        </div>
+        <p class="main-product-description">Unisex sweater in black, super comfortable and perfect for all seasons.</p>
+        <ul class="main-product-sizes">
+          <li class="main-product-size">
+            <label for="sizeS">
+              <input type="radio" id="sizeS" name="size" value="S" checked>
+              <span>S</span>
+            </label>
+          </li>
+          <li class="main-product-size">
+            <label for="sizeM">
+              <input type="radio" id="sizeM" name="size" value="M">
+              <span>M</span>
+            </label>
+          </li>
+          <li class="main-product-size">
+            <label for="sizeL">
+              <input type="radio" id="sizeL" name="size" value="L">
+              <span>L</span>
+            </label>
+          </li>
+        </ul>
+        <div class="main-product-cart-container">
+          <p class="main-product-cart-text">Add to cart</p>
+          <form id="main-product-form" method="post" action="/">
+            <button class="main-product-cart-button">
+              <svg class="cart" width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="checkmark" width="20" height="20" viewBox="0 0 24 24">
+                <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="main-product-image-container">
+        <img class="main-product-image" src="<%= product[0].includes.Asset[0].fields.file.url %>" alt="<%= product[0].items[0].fields.title %>" width="820" height="600" loading="lazy">
+      </div>
+    </article>
+  </div>
+  <div class="sub-product-container">
+    <% for (let i = 1; i < product.length; i++) { %>
+      <article class="sub-product fadein">
+        <img class="sub-product-image" src="<%= product[i].includes.Asset[0].fields.file.url %>" alt="<%= product[i].items[0].fields.title %>" width="300" height="300">
+        <div class="sub-product-info-container">
+          <div class="sub-product-title-price-container">
+            <h2 class="sub-product-title"><%= product[i].items[0].fields.title %></h2>
+            <p class="sub-product-price">20 tokens</p>
+          </div>
+          <p class="sub-product-description"><%= descriptions[i - 1] %></p>
+          <ul class="sub-product-sizes">
+            <li class="sub-product-size">
+              <label for="size0-<%= tagid1[i - 1] %>">
+                <input type="radio" id="size0-<%= tagid1[i - 1] %>" name="size-sub-<%= tagid1[i - 1] %>" value="S-sub-<%= tagid1[i - 1] %>">
+                <span>S</span>
+              </label>
+            </li>
+            <li class="sub-product-size">
+              <label for="size1-<%= tagid1[i - 1] %>">
+                <input type="radio" id="size1-<%= tagid1[i - 1] %>" name="size-sub-<%= tagid1[i - 1] %>" value="M-sub-<%= tagid1[i - 1] %>">
+                <span>M</span>
+              </label>
+            </li>
+            <li class="sub-product-size">
+              <label for="size2-<%= tagid1[i - 1] %>">
+                <input type="radio" id="size2-<%= tagid1[i - 1] %>" name="size-sub-<%= tagid1[i - 1] %>" value="L-sub-<%= tagid1[i - 1] %>">
+                <span>L</span>
+              </label>
+            </li>
+          </ul>
+          <div class="sub-product-cart-container">
+            <p class="sub-product-cart-text">Add to cart</p>
+            <form id=sub-product-form-<%= tagid1[i - 1] %> method="post" action="/">
+              <button class="sub-product-cart-button <%= tagid1[i - 1] %>" type="submit">
+                <svg class="cart" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="checkmark" width="20" height="20" viewBox="0 0 24 24">
+                  <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </article>
+    <% } %>
+  </div>
+</main>
 
 
-  <%= product[0].items[0].fields.title %>
-  <br>
-<img src="<%= product[0].includes.Asset[0].fields.file.url %>" width="300">
-<p><%= product[0].includes.Entry[0].fields.value %></p>
 
-
-
-
-
-
-
-
-
-
-
-<br>
-<%= product[1].items[0].fields.title %>
-<br>
-<img src="<%= product[1].includes.Asset[0].fields.file.url %>" width="300">
-<br>
-  <%= product[2].items[0].fields.title %>
-  <br>
-<img src="<%= product[2].includes.Asset[0].fields.file.url %>" width="300">
-<br>
-<%= product[3].items[0].fields.title %>
-<br>
-<img src="<%= product[3].includes.Asset[0].fields.file.url %>" width="300">
-<br>
-<%= product[4].items[0].fields.title %>
-<br>
-<img src="<%= product[4].includes.Asset[0].fields.file.url %>" width="300">
-<br>
-
-
-
-
-</body>
-</html>
+<%- include('./partials/footer') %>
