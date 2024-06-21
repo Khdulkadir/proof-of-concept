@@ -40,10 +40,6 @@ app.get('/', (req, res) => {
           res.render('index', { product: productdata });
         });
     })
-    .catch(error => {
-      console.error('Error in index route:', error);
-      res.status(500).send('Internal Server Error');
-    });
 });
 
 // app.get('/', (request, response) => {

@@ -9,14 +9,40 @@
   <h1>Product List</h1>
 
 
-<%= product[0].items[0].fields.title %>
+  <%= product[0].items[0].fields.title %>
+  <br>
+<img src="<%= product[0].includes.Asset[0].fields.file.url %>" width="300">
+<p><%= product[0].includes.Entry[0].fields.value %></p>
 
 
-<%= product[0].items[0].fields.title %>
-<%= product[0].items[0].fields.description %>
-<% console.log(product[0].items[0].fields.products) %>
-<%= product[0].includes.Entry[0].fields.size.value %>
-<%= product[0].includes.Asset[0].fields.file.url %>
+
+
+
+
+
+
+
+
+
+<br>
+<%= product[1].items[0].fields.title %>
+<br>
+<img src="<%= product[1].includes.Asset[0].fields.file.url %>" width="300">
+<br>
+  <%= product[2].items[0].fields.title %>
+  <br>
+<img src="<%= product[2].includes.Asset[0].fields.file.url %>" width="300">
+<br>
+<%= product[3].items[0].fields.title %>
+<br>
+<img src="<%= product[3].includes.Asset[0].fields.file.url %>" width="300">
+<br>
+<%= product[4].items[0].fields.title %>
+<br>
+<img src="<%= product[4].includes.Asset[0].fields.file.url %>" width="300">
+<br>
+
+
 
 
 </body>
