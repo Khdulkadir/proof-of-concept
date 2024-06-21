@@ -11,7 +11,7 @@ Touch Tribe Webshop
 
 ## Beschrijving
 Ik heb een prototype gemaakt van een webshop voor Touch Tribe. Op de webshop kunnen werknemers van Touch Tribe met 'tokens' bedrijfsartikelen kopen. De afreken functionaliteit is er nog niet maar met de api data van Contenftul zijn de artikelen wel opgehaald van de API.
-<a href="https://proof-of-concept-u0v8.onrender.com">Touch Tribe Webshop</a>
+<a href="https://proof-of-concept-0t0x.onrender.com">Touch Tribe Webshop</a>
 
 ![Screenshot_1](https://github.com/Khdulkadir/proof-of-concept/assets/144004145/d125bc98-7d11-4106-bfb9-1e07a94312af)
 
