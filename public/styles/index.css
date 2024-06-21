@@ -294,7 +294,7 @@ h2.sub-product-title {
 p.sub-product-price {
     font-size: 16px;
     font-weight: 700;
-    color: var(--alt-light-text-color);
+    color: #665e5e;
     font-family: var(--font-family);
 }
 
