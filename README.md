@@ -1,32 +1,35 @@
 > _Fork_ deze leertaak en ga aan de slag. Onderstaande outline ga je gedurende deze taak in jouw eigen GitHub omgeving uitwerken. De instructie vind je in: [docs/INSTRUCTIONS.md](docs/INSTRUCTIONS.md)
 
 # Titel
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
-
+Touch Tribe Webshop
 ## Inhoudsopgave
 
   * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
   * [Kenmerken](#kenmerken)
   * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
   * [Licentie](#licentie)
 
 ## Beschrijving
-<!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+Ik heb een prototype gemaakt van een webshop voor Touch Tribe. Op de webshop kunnen werknemers van Touch Tribe met 'tokens' bedrijfsartikelen kopen. De afreken functionaliteit is er nog niet maar met de api data van Contenftul zijn de artikelen wel opgehaald van de API.
+<a href="https://proof-of-concept-u0v8.onrender.com">Touch Tribe Webshop</a>
 
-## Gebruik
-<!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
+![Screenshot_1](https://github.com/Khdulkadir/proof-of-concept/assets/144004145/d125bc98-7d11-4106-bfb9-1e07a94312af)
 
 ## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
+Node.js: De backend van deze website is gebouwd met Node.js.
+Express.js: Het webframework Express.js is gebruikt voor het opzetten van de server.
+EJS: EJS fungeert als de templating engine om dynamische HTML-pagina's te genereren.
+HTML/CSS: De website is gestructureerd met HTML en gestyled met CSS.
+Daarnaast is de website volledig responsief.
 
 ## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+Volg deze stappen om bij te dragen aan de TouchTribe Webshop repository:
 
-## Bronnen
+Clone de repository naar je eigen computer.
+Controleer of Node.js op je systeem is geïnstalleerd.
+Voer het commando npm install uit in de hoofdmap van het project om de benodigde npm-pakketten te installeren.
+Start de server met het commando npm start.
+Je kunt nu de site bekijken via de localhost.
 
 ## Licentie
 
